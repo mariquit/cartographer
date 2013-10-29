@@ -415,15 +415,7 @@ class Route {
             self::$nested_prefix = '';
         }
 
-        // Reset our prefix.
-        if (self::$nested_depth)
-        {
-            self::$nested_prefix = '';
-        }
-        else
-        {
-            self::$nested_depth = self::$nested_depth === 0 ? self::$nested_depth : self::$nested_depth -1;
-        }
+        self::$nested_depth = self::$nested_depth === 0 ? self::$nested_depth : self::$nested_depth -1;
     }
 
     //--------------------------------------------------------------------
