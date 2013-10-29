@@ -37,7 +37,7 @@ class Route {
      * @param  array  $route The array to merge
      * @return array         The merge route array.
      */
-    public function map($routes=array())
+    public static function map($routes=array())
     {
         $controller = isset($routes['default_controller']) ? $routes['default_controller'] : self::$default_home;
 
@@ -59,7 +59,7 @@ class Route {
      * @param string $to
      * @return void
      */
-    public function any($from, $to, $options=array(), $nested=false)
+    public static function any($from, $to, $options=array(), $nested=false)
     {
         return self::createRoute($from, $to, $options, $nested);
     }
@@ -73,7 +73,7 @@ class Route {
     // $_SERVER['REQUEST_METHOD'] is the proper type.
     //
 
-    public function get($from, $to, $options=array(), $nested=false)
+    public static function get($from, $to, $options=array(), $nested=false)
     {
         if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'GET')
         {
@@ -83,7 +83,7 @@ class Route {
 
     //--------------------------------------------------------------------
 
-    public function post($from, $to, $options=array(), $nested=false)
+    public static function post($from, $to, $options=array(), $nested=false)
     {
         if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST')
         {
@@ -93,7 +93,7 @@ class Route {
 
     //--------------------------------------------------------------------
 
-    public function put($from, $to, $options=array(), $nested=false)
+    public static function put($from, $to, $options=array(), $nested=false)
     {
         if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'PUT')
         {
@@ -103,7 +103,7 @@ class Route {
 
     //--------------------------------------------------------------------
 
-    public function delete($from, $to, $options=array(), $nested=false)
+    public static function delete($from, $to, $options=array(), $nested=false)
     {
         if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'DELETE')
         {
@@ -113,7 +113,7 @@ class Route {
 
     //--------------------------------------------------------------------
 
-    public function head($from, $to, $options=array(), $nested=false)
+    public static function head($from, $to, $options=array(), $nested=false)
     {
         if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'HEAD')
         {
@@ -123,7 +123,7 @@ class Route {
 
     //--------------------------------------------------------------------
 
-    public function patch($from, $to, $options=array(), $nested=false)
+    public static function patch($from, $to, $options=array(), $nested=false)
     {
         if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'PATCH')
         {
@@ -133,7 +133,7 @@ class Route {
 
     //--------------------------------------------------------------------
 
-    public function options($from, $to, $options=array(), $nested=false)
+    public static function options($from, $to, $options=array(), $nested=false)
     {
         if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'OPTIONS')
         {
@@ -235,7 +235,7 @@ class Route {
      * @param  string  $name      The prefix to add to the routes.
      * @param  Closure $callback
      */
-    public function prefix($name, Closure $callback)
+    public static function prefix($name, Closure $callback)
     {
         self::$prefix = $name;
 
@@ -258,7 +258,7 @@ class Route {
      * @param  [type] $name [description]
      * @return [type]       [description]
      */
-    public function named($name)
+    public static function named($name)
     {
         if (isset(self::$named_routes[$name]))
         {
@@ -285,7 +285,7 @@ class Route {
      *
      * @return void
      */
-    public function context($name, $controller=null, $options=array())
+    public static function context($name, $controller=null, $options=array())
     {
         // If $controller is an array, then it's actually the options array,
         // so we'll reorganize parameters.
@@ -341,7 +341,7 @@ class Route {
      *     $route['posts']          = '';
      *     $route['photos/(:num)']  = '';
      */
-    public function block()
+    public static function block()
     {
         $paths = func_get_args();
 
@@ -368,7 +368,7 @@ class Route {
      *
      * @return void
      */
-    public function reset()
+    public static function reset()
     {
         self::$routes = array();
         self::$named_routes     = array();
