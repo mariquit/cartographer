@@ -1,5 +1,7 @@
 # Cartographer
 
+[![Build Status](https://travis-ci.org/lonnieezell/cartographer.png)](https://travis-ci.org/lonnieezell/cartographer)
+
 Cartographer will be a drop-in replacement for CodeIgniter's Router and Loader libraries that provides true modular support, vastly improved Routing and HMVC support.
 
 The addition of Packages in CodeIgniter 2.x branch was a welcome improvement, but did not go far enough. It only allowed for shared code, not Routing support. True support of modules is necessary to help developers with code sharing and to help build up the community once again. In addition, CodeIgniter's Router is showing it's age against the powerful solutions found in other PHP frameworks like Laravel. Cartographer is meant to help bring CodeIgniter into the modern age, or at least help it take a step in that direction.
