@@ -497,4 +497,44 @@ class RouteTest extends PHPUnit_Framework_TestCase {
     }
 
     //--------------------------------------------------------------------
+
+    //--------------------------------------------------------------------
+    // Blocking Routes
+    //--------------------------------------------------------------------
+
+    public function test_route_block_empty()
+    {
+        Route::block();
+
+        $this->assertEquals(array(), Route::map());
+    }
+
+    //--------------------------------------------------------------------
+
+    public function test_route_block_single()
+    {
+        Route::block('posts');
+
+        $data = array(
+            'posts' => ''
+        );
+
+        $this->assertEquals($data, Route::map());
+    }
+
+    //--------------------------------------------------------------------
+
+    public function test_route_block_multiple()
+    {
+        Route::block('posts', 'photos/(:num)');
+
+        $data = array(
+            'posts'         => '',
+            'photos/(:num)' => ''
+        );
+
+        $this->assertEquals($data, Route::map());
+    }
+
+    //--------------------------------------------------------------------
 }

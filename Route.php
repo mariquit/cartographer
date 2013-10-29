@@ -330,6 +330,34 @@ class Route {
 
     //--------------------------------------------------------------------
 
+    /**
+     * Allows you to easily block access to any number of routes by setting
+     * that route to an empty path ('').
+     *
+     * Example:
+     *     Route::block('posts', 'photos/(:num)');
+     *
+     *     // Same as...
+     *     $route['posts']          = '';
+     *     $route['photos/(:num)']  = '';
+     */
+    public function block()
+    {
+        $paths = func_get_args();
+
+        if ( ! is_array($paths))
+        {
+            return;
+        }
+
+        foreach ($paths as $path)
+        {
+            self::createRoute($path, '');
+        }
+    }
+
+    //--------------------------------------------------------------------
+
 
     //--------------------------------------------------------------------
     // Utility Methods

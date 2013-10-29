@@ -88,6 +88,16 @@ By default, the resulting parameters in the $to portion of the route will start 
     Route::resources('photos', array('offset' => 1));
 
 
+## Blocking Routes
+
+You might find times where you need to block access to one or more routes. For example, you might have relocated the default user login page so that script-kiddies couldn't find your page by assuming it's a Bonfire site and would be at a normal location. In this case, you would want to block any access to /users/login, which would normally work just fine. In this case you can use the <tt>block()</tt> method to block as many routes as you'd like.
+
+    Route::block('users/login', 'photos/(:num)');
+
+    // The same as:
+    $route['users/login']    = '';
+    $route['photos/(:num)']  = '';
+
 
 
 ## Route Prefixing
