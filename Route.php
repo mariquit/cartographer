@@ -391,7 +391,7 @@ class Route {
      *
      * @return array          The built route.
      */
-    private function createRoute($from, $to, $options=array(), $nested=false)
+    private static function createRoute($from, $to, $options=array(), $nested=false)
     {
         $prefix = is_null(self::$prefix) ? '' : self::$prefix .'/';
 
