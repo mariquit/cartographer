@@ -416,7 +416,7 @@ class Route {
         }
 
         // Reset our prefix.
-        if ($nested_depth)
+        if (self::$nested_depth)
         {
             self::$nested_prefix = '';
         }
